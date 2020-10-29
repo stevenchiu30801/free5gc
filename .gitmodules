@@ -10,6 +10,9 @@
 [submodule "src/n3iwf"]
 	path = src/n3iwf
 	url = https://github.com/free5gc/n3iwf.git
+[submodule "src/nef"]
+	path = src/nef
+	url = https://github.com/stevenchiu30801/free5gc-nef
 [submodule "src/nrf"]
 	path = src/nrf
 	url = https://github.com/free5gc/nrf.git
@@ -69,7 +72,7 @@
 	url = https://github.com/free5gc/ngap.git
 [submodule "lib/openapi"]
 	path = lib/openapi
-	url = https://github.com/free5gc/openapi.git
+	url = https://github.com/stevenchiu30801/openapi.git
 [submodule "lib/path_util"]
 	path = lib/path_util
 	url = https://github.com/free5gc/path_util.git
