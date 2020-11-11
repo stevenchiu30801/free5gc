@@ -12,7 +12,7 @@
 	url = https://github.com/free5gc/n3iwf.git
 [submodule "src/nef"]
 	path = src/nef
-	url = https://github.com/stevenchiu30801/free5gc-nef
+	url = https://github.com/stevenchiu30801/free5gc-nef.git
 [submodule "src/nrf"]
 	path = src/nrf
 	url = https://github.com/free5gc/nrf.git
@@ -30,7 +30,7 @@
 	url = https://github.com/free5gc/udm.git
 [submodule "src/udr"]
 	path = src/udr
-	url = https://github.com/free5gc/udr.git
+	url = https://github.com/stevenchiu30801/free5gc-udr.git
 [submodule "src/upf"]
 	path = src/upf
 	url = https://github.com/free5gc/upf.git
