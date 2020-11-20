@@ -33,7 +33,7 @@
 	url = https://github.com/stevenchiu30801/free5gc-udr.git
 [submodule "src/upf"]
 	path = src/upf
-	url = https://github.com/free5gc/upf.git
+	url = https://github.com/stevenchiu30801/free5gc-upf.git
 [submodule "lib/aes"]
 	path = lib/aes
 	url = https://github.com/free5gc/aes.git
