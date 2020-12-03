@@ -79,7 +79,7 @@ func main() {
 
 	// New UE
 	// ue := test.NewRanUeContext("imsi-2089300007487", 1, security.AlgCiphering128NEA2, security.AlgIntegrity128NIA2)
-	ue := test.NewRanUeContext("imsi-2089300007487", 1, security.AlgCiphering128NEA0, security.AlgIntegrity128NIA2)
+	ue := test.NewRanUeContext("imsi-208930000000003", 1, security.AlgCiphering128NEA0, security.AlgIntegrity128NIA2)
 	ue.AmfUeNgapId = 1
 	ue.AuthenticationSubs = test.GetAuthSubscription(TestGenAuthData.MilenageTestSet19.K,
 		TestGenAuthData.MilenageTestSet19.OPC,
@@ -123,8 +123,8 @@ func main() {
 
 	// send InitialUeMessage(Registration Request)(imsi-2089300007487)
 	mobileIdentity5GS := nasType.MobileIdentity5GS{
-		Len:    12, // suci
-		Buffer: []uint8{0x01, 0x02, 0xf8, 0x39, 0xf0, 0xff, 0x00, 0x00, 0x00, 0x00, 0x47, 0x78},
+		Len:    13, // suci
+		Buffer: []uint8{0x01, 0x02, 0xf8, 0x39, 0xf0, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30},
 	}
 
 	ueSecurityCapability := ue.GetUESecurityCapability()
