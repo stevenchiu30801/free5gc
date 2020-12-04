@@ -3,7 +3,7 @@
 	url = https://github.com/free5gc/webconsole.git
 [submodule "src/amf"]
 	path = src/amf
-	url = https://github.com/free5gc/amf.git
+	url = https://github.com/stevenchiu30801/free5gc-amf.git
 [submodule "src/ausf"]
 	path = src/ausf
 	url = https://github.com/free5gc/ausf.git
@@ -21,7 +21,7 @@
 	url = https://github.com/free5gc/nssf.git
 [submodule "src/pcf"]
 	path = src/pcf
-	url = https://github.com/free5gc/pcf.git
+	url = https://github.com/stevenchiu30801/free5gc-pcf.git
 [submodule "src/smf"]
 	path = src/smf
 	url = https://github.com/free5gc/smf.git
