@@ -96,31 +96,62 @@ func main() {
 				Uplink:   "1 Gbps",
 			},
 		},
-		SessionManagementSubscriptionData: models.SessionManagementSubscriptionData{
-			SingleNssai: &models.Snssai{
-				Sst: 1,
-				Sd:  "010203",
-			},
-			DnnConfigurations: map[string]models.DnnConfiguration{
-				"internet": models.DnnConfiguration{
-					PduSessionTypes: &models.PduSessionTypes{
-						DefaultSessionType:  models.PduSessionType_IPV4,
-						AllowedSessionTypes: []models.PduSessionType{models.PduSessionType_IPV4},
-					},
-					SscModes: &models.SscModes{
-						DefaultSscMode:  models.SscMode__1,
-						AllowedSscModes: []models.SscMode{models.SscMode__1},
-					},
-					SessionAmbr: &models.Ambr{
-						Downlink: "2 Gbps",
-						Uplink:   "1 Gbps",
-					},
-					Var5gQosProfile: &models.SubscribedDefaultQos{
-						Var5qi: 9,
-						Arp: &models.Arp{
+		SessionManagementSubscriptionDataList: []models.SessionManagementSubscriptionData{
+			{
+				SingleNssai: &models.Snssai{
+					Sst: 1,
+					Sd:  "010203",
+				},
+				DnnConfigurations: map[string]models.DnnConfiguration{
+					"internet": models.DnnConfiguration{
+						PduSessionTypes: &models.PduSessionTypes{
+							DefaultSessionType:  models.PduSessionType_IPV4,
+							AllowedSessionTypes: []models.PduSessionType{models.PduSessionType_IPV4},
+						},
+						SscModes: &models.SscModes{
+							DefaultSscMode:  models.SscMode__1,
+							AllowedSscModes: []models.SscMode{models.SscMode__1},
+						},
+						SessionAmbr: &models.Ambr{
+							Downlink: "2 Gbps",
+							Uplink:   "1 Gbps",
+						},
+						Var5gQosProfile: &models.SubscribedDefaultQos{
+							Var5qi: 9,
+							Arp: &models.Arp{
+								PriorityLevel: 8,
+							},
 							PriorityLevel: 8,
 						},
-						PriorityLevel: 8,
+					},
+				},
+			},
+			{
+				SingleNssai: &models.Snssai{
+					Sst: 1,
+					Sd:  "112233",
+				},
+				DnnConfigurations: map[string]models.DnnConfiguration{
+					"internet": models.DnnConfiguration{
+						PduSessionTypes: &models.PduSessionTypes{
+							DefaultSessionType:  models.PduSessionType_IPV4,
+							AllowedSessionTypes: []models.PduSessionType{models.PduSessionType_IPV4},
+						},
+						SscModes: &models.SscModes{
+							DefaultSscMode:  models.SscMode__1,
+							AllowedSscModes: []models.SscMode{models.SscMode__1},
+						},
+						SessionAmbr: &models.Ambr{
+							Downlink: "2 Gbps",
+							Uplink:   "1 Gbps",
+						},
+						Var5gQosProfile: &models.SubscribedDefaultQos{
+							Var5qi: 9,
+							Arp: &models.Arp{
+								PriorityLevel: 8,
+							},
+							PriorityLevel: 8,
+						},
 					},
 				},
 			},
@@ -189,9 +220,6 @@ func main() {
 		amDataBsonM := toBsonM(subsData.AccessAndMobilitySubscriptionData)
 		amDataBsonM["ueId"] = ueId
 		amDataBsonM["servingPlmnId"] = plmnId
-		smDataBsonM := toBsonM(subsData.SessionManagementSubscriptionData)
-		smDataBsonM["ueId"] = ueId
-		smDataBsonM["servingPlmnId"] = plmnId
 		smfSelSubsBsonM := toBsonM(subsData.SmfSelectionSubscriptionData)
 		smfSelSubsBsonM["ueId"] = ueId
 		smfSelSubsBsonM["servingPlmnId"] = plmnId
@@ -202,10 +230,18 @@ func main() {
 
 		MongoDBLibrary.RestfulAPIPutOne(authSubsDataColl, filterUeIdOnly, authSubsBsonM)
 		MongoDBLibrary.RestfulAPIPutOne(amDataColl, filter, amDataBsonM)
-		MongoDBLibrary.RestfulAPIPutOne(smDataColl, filter, smDataBsonM)
 		MongoDBLibrary.RestfulAPIPutOne(smfSelDataColl, filter, smfSelSubsBsonM)
 		MongoDBLibrary.RestfulAPIPutOne(amPolicyDataColl, filterUeIdOnly, amPolicyDataBsonM)
 		MongoDBLibrary.RestfulAPIPutOne(smPolicyDataColl, filterUeIdOnly, smPolicyDataBsonM)
+
+		for _, data := range subsData.SessionManagementSubscriptionDataList {
+			smDataBsonM := toBsonM(data)
+			smDataBsonM["ueId"] = ueId
+			smDataBsonM["servingPlmnId"] = plmnId
+			filterSmData := bson.M{"ueId": ueId, "servingPlmnId": plmnId, "snssai": data.SingleNssai}
+
+			MongoDBLibrary.RestfulAPIPutOne(smDataColl, filterSmData, smDataBsonM)
+		}
 	}
 }
 
