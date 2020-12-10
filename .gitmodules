@@ -7,6 +7,9 @@
 [submodule "src/ausf"]
 	path = src/ausf
 	url = https://github.com/free5gc/ausf.git
+[submodule "src/bsf"]
+	path = src/bsf
+	url = https://github.com/stevenchiu30801/free5gc-bsf.git
 [submodule "src/n3iwf"]
 	path = src/n3iwf
 	url = https://github.com/free5gc/n3iwf.git
