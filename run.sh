@@ -10,7 +10,7 @@ sleep 1
 
 cd ../../..
 
-NF_LIST="nrf amf smf udr pcf udm nssf ausf nef"
+NF_LIST="nrf amf smf udr pcf udm nssf ausf nef bsf"
 
 export GIN_MODE=release
 

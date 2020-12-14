@@ -3,7 +3,7 @@ GO_SRC_PATH = src
 C_BUILD_PATH = build
 
 NF = $(GO_NF) $(C_NF)
-GO_NF = amf ausf nrf nssf pcf smf udm udr n3iwf
+GO_NF = amf ausf nrf nssf pcf smf udm udr n3iwf nef bsf
 C_NF = upf
 
 NF_GO_FILES = $(shell find $(GO_SRC_PATH)/$(%) -name "*.go" ! -name "*_test.go")

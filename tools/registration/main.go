@@ -33,9 +33,9 @@ import (
 )
 
 const (
-	ranIpAddr = "192.168.2.3"
-	amfIpAddr = "192.168.2.2"
-	mongoAddr = "192.168.2.2"
+	ranIpAddr = "127.0.0.1"
+	amfIpAddr = "127.0.0.1"
+	mongoAddr = "127.0.0.1"
 )
 
 func checkErr(err error) {
