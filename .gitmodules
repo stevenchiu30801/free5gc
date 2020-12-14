@@ -18,7 +18,7 @@
 	url = https://github.com/stevenchiu30801/free5gc-nef.git
 [submodule "src/nrf"]
 	path = src/nrf
-	url = https://github.com/free5gc/nrf.git
+	url = https://github.com/stevenchiu30801/free5gc-nrf.git
 [submodule "src/nssf"]
 	path = src/nssf
 	url = https://github.com/free5gc/nssf.git
